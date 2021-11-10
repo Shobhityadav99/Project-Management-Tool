@@ -1,0 +1,92 @@
+/** @format */
+* {
+  margin: 0;
+}
+
+.navbar-container {
+  background-color: #c4c4c4;
+  position: sticky;
+  top: 0;
+  height: 6vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar-left {
+  flex: 3;
+  margin-left: 1vw;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left-vl {
+  margin-left: 1vw;
+  height: 6vh;
+  background-color: blueviolet;
+  border-left: 1px solid rgb(41, 34, 34);
+}
+
+.navbar-left-text {
+  margin-left: 1vw;
+}
+
+.navbar-container-hamburgericon:hover {
+  cursor: pointer;
+}
+
+.navbar-center {
+  flex: 6;
+  display: flex;
+}
+
+.navbar-center-item1,
+.navbar-center-item2,
+.navbar-center-item3,
+.navbar-center-item4 {
+  width: 50%;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #3e1068;
+  cursor: pointer;
+}
+
+/* .navbar-center-item1:hover, */
+.navbar-center-item2:hover,
+.navbar-center-item3:hover,
+.navbar-center-item4:hover {
+  background-color: #22063b;
+}
+
+.active {
+  background-color: #ff7179;
+}
+
+.navbar-right {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 1vw;
+}
+
+.fa-bell {
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+.navbar-right-downicon {
+  margin-left: 0.5vw;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.navbar-right-usericon {
+  margin-right: 0.2vw;
+  font-size: x-large;
+  cursor: pointer;
+}

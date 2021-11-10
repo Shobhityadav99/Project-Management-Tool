@@ -1,0 +1,76 @@
+/** @format */
+
+.searchbar-container {
+  height: 7vh;
+  background-color: #3e1068;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  position: sticky;
+  margin-left: 5%;
+  margin-top: 3vh;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+}
+
+.searchbar-left,
+.searchbar-right {
+  display: flex;
+  flex: 6;
+  align-items: center;
+}
+
+.searchbar-right {
+  color: white;
+  justify-content: right;
+  margin-right: 1vw;
+}
+
+.searchbar-left-searchicon {
+  font-size: large;
+  color: grey;
+  margin-right: 0.5vw;
+}
+
+.searchbar-left-searchicon:hover {
+  color: lightseagreen;
+  cursor: pointer;
+}
+
+.searchbar-left-search-container {
+  height: 4.2vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-left: 1vw;
+  border-radius: 7px;
+}
+
+.searchbar-left-searchbox {
+  height: 4vh;
+  border: none;
+  font-size: medium;
+  margin-left: 0.5vw;
+  border-radius: 7px 0 0 7px;
+}
+
+.searchbar-left-searchbox:focus {
+  outline: none;
+}
+
+.searchbar-right-calendaricon {
+  margin-right: 2vw;
+  font-size: large;
+  cursor: pointer;
+}
+
+.searchbar-right-usericon {
+  margin-right: 0.2vw;
+  font-size: large;
+}
+
+.searchbar-right-plusicon {
+  margin-right: 0.7vw;
+  font-size: large;
+  cursor: pointer;
+}
