@@ -1,0 +1,50 @@
+.card-container {
+  height: 500px;
+  width: 300px;
+  background-color: gray;
+  margin: 5px;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.edit-text {
+    margin: 0.5vh;
+    margin-left: 1vw;
+    font-size: x-large;
+    max-width: 280px;
+    margin-top: 10px;
+}
+
+.label-text{
+    background-color: chartreuse;
+    margin: 0.5vw;
+}
+
+.edit-button{
+    margin-top: 1vh;
+    margin-left: 4.3vw;
+    background-color: grey;
+    border: 0;
+}
+
+.addButton{
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    margin-left: 130px;
+    cursor: pointer;
+}
+
+.trashButton{
+    font-size: large;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 136px;
+    cursor: pointer;
+}
+
+.card-trash-bottom{
+    margin-top: 335px;
+}
