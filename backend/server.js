@@ -1,9 +1,6 @@
-/** @format */
-
 const express = require("express");
 const userRoutes = require("./routes/userRoutes");
 const bodyParser = require("body-parser");
-
 
 require("./db/database");
 
