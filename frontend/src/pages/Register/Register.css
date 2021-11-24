@@ -1,0 +1,84 @@
+.login {
+	width: 100vw;
+	height: 100vh;
+	background-color: #f0f2f5;
+	/* background-image: url("../../images/Fade-In-Background.svg"); */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginWrapper {
+	width: 70%;
+	height: 70%;
+	display: flex;
+}
+
+.loginLeft,
+.loginRight {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.loginLogo {
+	font-size: 60px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.highlight {
+	color: #1775ee;
+}
+
+.loginBox {
+	height: 400px;
+	padding: 20px;
+	/* background-color: #fff; */
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.loginInput {
+	height: 50px;
+	border-radius: 10px;
+	border: 1px solid gray;
+	font-size: 20px;
+	padding-left: 20px;
+}
+
+.loginInput:focus {
+	border: 0.5px dodgerblue;
+}
+
+.loginBtn {
+	height: 50px;
+	border-radius: 10px;
+	border: none;
+	background-color: #1775ee;
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.forgot {
+	text-align: center;
+	color: #1775ee;
+}
+
+.registerBtn {
+	width: 70%;
+	height: 50px;
+	align-self: center;
+	border-radius: 10px;
+	border: none;
+	background-color: rgb(46, 216, 12);
+	color: white;
+	font-size: 18px;
+	font-weight: 400;
+	cursor: pointer;
+}

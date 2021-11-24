@@ -1,17 +1,16 @@
-import { Card } from "./components/Card";
-import { Navbar } from "./components/Navbar";
-import { Searchbar } from "./components/Searchbar";
-import './App.css';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 function App() {
-  return <div className='App'>
-    <Navbar />
-    <Searchbar />
-    <div style={{display: "flex"}}>
-      <Card />
-      <Card />
-    </div>
-  </div>;
+	return (
+		<Router>
+			<Routes>
+				<Route exact path="/" element={<Login />} />
+				<Route exact path="/register" element={<Register />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
