@@ -1,41 +1,31 @@
+import React from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
 const Login = () => {
-	return (
-		<div className="login">
-			<div className="loginWrapper">
-				<div className="loginLeft">
-					<h3 className="loginLogo">Code Buddy</h3>
-					<span className="loginDesc">
-						Connect with new people to develop cool stuff with{" "}
-						<span className="highlight"> Code Buddy</span> .
-					</span>
-				</div>
-				<div className="loginRight">
-					<div className="loginBox">
-						<input placeholder="E-mail" className="loginInput" />
-						<input
-							placeholder="Password"
-							type="password"
-							className="loginInput"
-						/>
-						<button className="loginBtn">Login</button>
-						<a href="/" className="forgot">
-							<span>Forgot Password?</span>
-						</a>
-						<button className="registerBtn">
-							<Link
-								to="/register"
-								style={{ textDecoration: "none", color: "white" }}
-							>
-								Create a new account
-							</Link>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="login-page">
+      <div className="navbar">
+        <div className="navbar-center-item1">Tutorials</div>
+        <div className="navbar-center-item2">Documentation</div>
+        <div className="navbar-center-item3">About Us</div>
+      </div>
+      <div className="choose-container">
+        <div className="choose-1 active">Login</div>
+        <div className="choose-2">Register</div>
+      </div>
+      <div className="login-container">
+        <div className="username">
+          <label className="label">Username:</label>
+          <input className="input" />
+          <label className="label">Password:</label>
+          <input className="input" />
+        </div>
+        <div className="forgot-password">
+          <a href="/">Forgot Password</a>
+        </div>
+        <button className="submit-button">Login</button>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
