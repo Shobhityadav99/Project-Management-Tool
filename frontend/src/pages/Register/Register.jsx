@@ -1,42 +1,34 @@
+import React from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
-
 const Register = () => {
-	return (
-		<div className="login">
-			<div className="loginWrapper">
-				<div className="loginLeft">
-					<h3 className="loginLogo">Code Buddy</h3>
-					<span className="loginDesc">
-						Connect with new people to develop cool stuff with{" "}
-						<span className="highlight"> Code Buddy</span> .
-					</span>
-				</div>
-				<div className="loginRight">
-					<div className="loginBox">
-						<input placeholder="Username" className="loginInput" />
-						<input placeholder="E-mail" className="loginInput" />
-						<input
-							placeholder="Password"
-							type="password"
-							className="loginInput"
-						/>
-						<input
-							placeholder="Password Again"
-							type="password"
-							className="loginInput"
-						/>
-						<button className="loginBtn">Sign Up </button>
-						<button className="registerBtn">
-							<Link to="/" style={{ textDecoration: "none", color: "white" }}>
-								Log In
-							</Link>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="register-page">
+      <div className="register-navbar">
+        <div className="register-navbar-center-item1">Tutorials</div>
+        <div className="register-navbar-center-item2">Documentation</div>
+        <div className="register-navbar-center-item3">About Us</div>
+      </div>
+      <div className="register-choose-container">
+        <div className="choose-01 ">Login</div>
+        <div className="choose-02 active ">Register</div>
+      </div>
+      <div className="register-container">
+        <div className="register-username">
+
+          <label className="register-label">Username:</label>
+		  <input type="text" className="register-input" />
+          <label className="register-label">Email:</label>
+          <input  type="text" className="register-input" />
+          <label className="register-label">Password:</label>
+          <input type="text" className="register-input" />
+		  <label className="register-label">Confirm Password:</label>
+          <input type="text"  className="register-input" />
+        </div>
+       
+        <button className="register-submit-button">SignUp</button>
+      </div>
+    </div>
+  );
 };
 
 export default Register;
