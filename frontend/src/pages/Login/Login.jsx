@@ -1,6 +1,7 @@
 import React from "react";
 import "./Login.css";
 import loginImage from "../../resources/loginImage.png";
+import {Link} from 'react-router-dom';
 const Login = () => {
   return ( <>
     <div className="login-navbar">
@@ -27,7 +28,9 @@ const Login = () => {
         <div className="forgot-password">
           <a href="/">Forgot Password</a>
         </div>
-        <button className="login-submit-button">Login</button>
+        <Link to="/project">
+          <button className="login-submit-button">Login</button>
+        </Link>
       </div>
       </div>
     </div>

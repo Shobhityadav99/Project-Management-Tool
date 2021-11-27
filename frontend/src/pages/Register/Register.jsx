@@ -1,6 +1,7 @@
 import React from "react";
 import "./Register.css";
 import registerImage from "../../resources/loginImage.png";
+import {Link} from 'react-router-dom';
 const Register = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const Register = () => {
       </div>
       <div className="register-page">
       <div className="register-image-container">
-        <img src={registerImage} className="register-image"/>
+        <img src={registerImage} alt="" className="register-image"/>
       </div>
       <div className="register-container">
       <div className="register-choose-container">
@@ -29,8 +30,9 @@ const Register = () => {
 		  <label className="register-label">Confirm Password:</label>
           <input type="text"  className="register-input" />
         </div>
-       
+        <Link to="/project">
         <button className="register-submit-button">Register</button>
+        </Link>
       </div>
       </div>
     </div>

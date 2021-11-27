@@ -1,6 +1,10 @@
-.Project-container{
+.project-container{
     height: 100%;
     width: 100%;
     display: block;
     background-color: #5F2E72;
+}
+
+.project-card-container{
+    display: flex;
 }
