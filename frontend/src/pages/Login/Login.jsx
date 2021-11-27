@@ -10,7 +10,7 @@ const Login = () => {
       </div>
         <div className="login-page">
       <div className="login-image-container">
-        <img src={loginImage} className="login-image"/>
+        <img src={loginImage} alt="" className="login-image"/>
       </div>
       <div className="login-container">
       <div className="choose-container">

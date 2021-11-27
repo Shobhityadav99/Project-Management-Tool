@@ -28,6 +28,7 @@
     margin-left: 4.3vw;
     background-color: grey;
     border: 0;
+    cursor: pointer;
 }
 
 .addButton{
