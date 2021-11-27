@@ -38,7 +38,7 @@
 }
 
 .searchbar-left-search-container {
-  height: 4.2vh;
+  height: 4vh;
   background-color: white;
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .searchbar-left-searchbox {
-  height: 4vh;
+  height: 3vh;
   border: none;
   font-size: medium;
   margin-left: 0.5vw;
