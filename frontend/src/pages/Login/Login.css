@@ -7,7 +7,7 @@
   background-color: #3e1068;
 }
 
-.navbar {
+.login-navbar {
   background-color: #c4c4c4;
   position: sticky;
   top: 0;
@@ -18,9 +18,9 @@
   font-family: "Roboto", sans-serif;
 }
 
-.navbar-center-item1,
-.navbar-center-item2,
-.navbar-center-item3 {
+.login-navbar-center-item1,
+.login-navbar-center-item2,
+.login-navbar-center-item3 {
   width: 12vw;
   height: 6vh;
   display: flex;
@@ -32,9 +32,9 @@
   font-weight: bold;
 }
 
-.navbar-center-item1:hover,
-.navbar-center-item2:hover,
-.navbar-center-item3:hover {
+.login-navbar-center-item1:hover,
+.login-navbar-center-item2:hover,
+.login-navbar-center-item3:hover {
   color: #c4c4c4;
   background-color: #3e1068;
 }
@@ -140,7 +140,7 @@
   font-size: large;
 }
 
-.submit-button {
+.login-submit-button {
   margin-top: 3vh;
   margin-left: 5vw;
   background-color: #3e1068;
