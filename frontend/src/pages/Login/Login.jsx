@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import loginImage from "../../resources/loginImage.png"
+import loginImage from "../../resources/loginImage.png";
 const Login = () => {
   return ( <>
     <div className="navbar">
