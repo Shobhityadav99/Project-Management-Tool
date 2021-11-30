@@ -1,0 +1,19 @@
+.project-card-container{
+    margin-bottom: 1vh;
+    height: 30vh;
+    background-color: #3e1068;
+    width: 80%;
+}
+
+.project-square-container{
+    margin: 2vh;
+    height: 26vh;
+    width: 26vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: rgb(175, 171, 171) 10px 10px;
+    cursor: pointer;
+}

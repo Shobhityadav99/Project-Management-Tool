@@ -3,9 +3,14 @@ import "../css/Card.css";
 import EdiText from "react-editext";
 
 export const Card = () => {
-  let value = "Sidd ki moti gaand";
-  const onSave = (val) => {
-    value = val;
+  let Titlevalue = "title";
+  let Eventvalue = "event";
+  const onTitleSave = (val) => {
+    Titlevalue = val;
+    console.log("Edited Value -> ", val);
+  };
+  const onEventSave = (val) => {
+    Eventvalue = val;
     console.log("Edited Value -> ", val);
   };
   return (
@@ -15,8 +20,8 @@ export const Card = () => {
           <EdiText
             className="edit-text"
             type="text"
-            value={value}
-            onSave={onSave}
+            value={Titlevalue}
+            onSave={onTitleSave}
             editButtonClassName="edit-button"
             editButtonContent={<i class="fas fa-pen" />}
           />
@@ -25,8 +30,8 @@ export const Card = () => {
           <EdiText
             className="label-text"
             type="text"
-            value={value}
-            onSave={onSave}
+            value={Eventvalue}
+            onSave={onEventSave}
             buttonsAlign="before"
           />
           <i className="fas fa-plus addButton"></i>
