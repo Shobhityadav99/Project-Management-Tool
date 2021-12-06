@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = require("./User");
 
 const projectSchema = new mongoose.Schema({
-    user : [{
+    users : [{
         type: mongoose.Types.ObjectId,
         ref: 'User',
         required: true
