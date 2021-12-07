@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Project = require("./Project");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -17,7 +16,6 @@ const userSchema = new mongoose.Schema({
     minlength: 10,
   },
   projects: [{
-    ref: 'Project',
     type: mongoose.Types.ObjectId,
   }]
 });
