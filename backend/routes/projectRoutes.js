@@ -2,19 +2,20 @@ const router = require("express").Router();
 const Project = require("../models/Project");
 const User = require("../models/User");
 
-router.get("/:id", async (req, res) => {
-    const id = req.params.id;
-    try {
-        const user = User.findById(id);
-        if (!user) {
-            return res.status(404).json("User not found");
-        }
-        const projects = Project.find({ user });
-        res.json(projects);
-    } catch (err) {
-        res.status(500).json("Internal server error");
+router.get("/:id", async (req,res,next) => {
+    const ProjectId = req.params.id;
+    let project;
+    try{
+        project = await Project.findById(ProjectId);
+    }catch(err){
+        return next(err);
     }
-});
+    console.log(project);
+    if(!project){
+        return next(new Error("No Project Found with that id",404));
+    }
+    res.json({ project: project});
+})
 
 router.post("/create", async (req, res,next) => {
     const users = req.body.users;
@@ -33,6 +34,17 @@ router.post("/create", async (req, res,next) => {
         return next(error);
     }
     res.status(201).json({ project: createProject });
+});
+
+router.delete("/:id", async(req,res,next) => {
+    const ProjectId = req.params.id;
+    try{
+        await Project.findByIdAndDelete(ProjectId);
+    }catch(err){
+        return next(err);
+    }
+    console.log("Deleted");
+    res.json("Deleted");
 });
 
 module.exports = router;
