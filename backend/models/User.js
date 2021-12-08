@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 10,
   },
+  projects: [{
+    type: mongoose.Types.ObjectId,
+  }]
 });
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);
