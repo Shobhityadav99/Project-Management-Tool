@@ -1,8 +1,6 @@
-/** @format */
-
 .myaccount-container {
   margin-left: 30vw;
-  margin-top: 10vh;
+  margin-top: 5vh;
   background-color: #3e1068;
   width: fit-content;
   padding-left: 5vw;
@@ -19,6 +17,9 @@
 .myaccount-retype-password {
   height: 5vh;
   outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+
 }
 
 .myaccount-profile-image {
@@ -26,6 +27,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  
 }
 
 .myaccount-profile-image-container {

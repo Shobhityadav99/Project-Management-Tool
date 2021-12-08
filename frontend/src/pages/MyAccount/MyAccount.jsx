@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './MyAccount.css';
 import profileImage from '../../resources/pfp.jpg';
 
-const MyAccount = () => {
+export const MyAccount = () => {
 
     const [username, setUsername] = useState("Nishchay");
     const [email, setEmail] = useState("Nishchay@test.com");
@@ -53,13 +53,10 @@ const MyAccount = () => {
             <div className="myaccount-profile-image-container">
                 <img src={profileImage} className="myaccount-profile-image" />
             </div>
-                <i className="fas fa-pen-square myaccount-profile-image-edit-icon"></i>
-                
-        </div>
-       
-            
+                <i className="fas fa-pen-square myaccount-profile-image-edit-icon"></i>  
+        </div>     
         </div>
     )
 }
 
-export default MyAccount
+

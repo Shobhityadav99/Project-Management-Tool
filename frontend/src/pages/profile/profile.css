@@ -1,0 +1,157 @@
+.innerDiv{
+  margin-left: 5vw;
+  
+}
+.website_hr{
+  margin-left: 5vw;
+}
+.username_profile
+{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+}
+
+.profile{
+  margin-top:50px;
+ 
+}
+.para_profile
+{
+  margin-bottom: -1vw;
+  color:grey;
+ 
+}
+.username_profile_input
+{
+  margin-left: 20vw;
+  font-size: medium;
+  border-radius: 7px;
+  padding-bottom: 5px;
+  
+  
+  
+}
+.username_input{
+  
+  height: 5vh;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+  width: 20vw;
+}
+.email_input{
+  height: 5vh;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+  width: 20vw;
+}
+.profile_website{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+}
+.username_email_input
+{
+  margin-left: 23.2vw;
+  font-size: medium;
+  border-radius: 7px;
+  padding-bottom: 5px;
+  width: 20vw;
+}
+.profile_photo
+{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+}
+.para_profile_update{
+  margin-bottom: -4vw;
+  margin-left: 5vw;
+  color:grey;
+  font-size: small;
+}
+.update_button_div
+{
+ 
+  margin-left: 25vw;
+  font-size: medium;
+  border-radius: 7px; 
+  padding-bottom: 15px;
+}
+
+.profile-image-container{
+  width: 6vw;
+  height: 15vh;
+  margin-left: 10vw;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+.profile_bio{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+}
+.para_profile_update_bio
+{
+  margin-bottom: -4vw;
+  margin-left: 5vw;
+  color:grey;
+  font-size: small;
+}
+.profile_textarea_bio
+{
+  height: 15vh;
+  width: 20vw;
+  margin-left: 14vw;
+  font-size: medium;
+  border-radius: 5px;
+  padding-bottom: 5px;
+ 
+}
+
+.password-change-label{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+
+}
+  
+.current_div,.new_div,.retype_div{
+  justify-items: left;
+  margin-left: 5vw;
+  display:flex;
+  margin-top: 4vh;
+}
+.profile-current-password,.profile-new-password{
+  margin-left: 13vw;
+  height: 5vh;
+  width: 20vw;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+}
+.profile-retype-password
+{
+  margin-left: 13.5vw;
+  height: 5vh;
+  width: 20vw;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+}
+.profile-new-password{
+  margin-left: 14.5vw;
+  height: 5vh;
+  width: 20vw;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0;
+}
+.password_button
+{
+  margin-left: 20vw;
+  margin-top: -7vh;
+}
+
