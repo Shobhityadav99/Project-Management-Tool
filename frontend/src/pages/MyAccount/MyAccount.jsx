@@ -51,7 +51,7 @@ export const MyAccount = () => {
             <Button variant="primary" className="btn btn-sm">Update Password</Button>
             </div>
             <div className="myaccount-profile-image-container">
-                <img src={profileImage} className="myaccount-profile-image" />
+                <img src={profileImage} alt="#" className="myaccount-profile-image" />
             </div>
                 <i className="fas fa-pen-square myaccount-profile-image-edit-icon"></i>  
         </div>     

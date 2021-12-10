@@ -28,12 +28,8 @@
   font-size: medium;
   border-radius: 7px;
   padding-bottom: 5px;
-  
-  
-  
 }
 .username_input{
-  
   height: 5vh;
   outline: none;
   border-radius: 5px;
@@ -54,7 +50,7 @@
 }
 .username_email_input
 {
-  margin-left: 23.2vw;
+  margin-left: 22.6vw;
   font-size: medium;
   border-radius: 7px;
   padding-bottom: 5px;

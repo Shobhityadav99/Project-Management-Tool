@@ -15,17 +15,17 @@ const Login = () => {
       </div>
       <div className="login-container">
       <div className="choose-container">
-        <div className="choose-1">Login</div>
-        <div className="choose-2">Register</div>
+        <div className="login-choose-1">Login</div>
+        <div className="login-choose-2">Register</div>
       </div>
       <div className="login-input-container">
-        <div className="username">
-          <label className="label">Username:</label>
-          <input className="input" />
-          <label className="label">Password:</label>
-          <input type="password" className="input" />
+        <div className="login-username">
+          <label className="login-label">Username:</label>
+          <input className="login-input" />
+          <label className="login-label">Password:</label>
+          <input type="password" className="login-input" />
         </div>
-        <div className="forgot-password">
+        <div className="login-forgot-password">
           <a href="/">Forgot Password</a>
         </div>
         <Link to="/project">

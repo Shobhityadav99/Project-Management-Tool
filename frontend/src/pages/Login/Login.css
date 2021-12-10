@@ -66,7 +66,7 @@
   font-family: 'Archivo', sans-serif;
 }
 
-.choose-container {
+.login-choose-container {
   margin-top: 10vh;
   border-radius: 50%;
   height: 6vh;
@@ -77,8 +77,8 @@
   font-size: large;
 }
 
-.choose-1,
-.choose-2 {
+.login-choose-1,
+.login-choose-2 {
   box-sizing: border-box;
   width: 15vw;
   height: 6vh;
@@ -91,18 +91,18 @@
   font-weight: bold;
 }
 
-.choose-2 {
+.login-choose-2 {
   border-radius: 0 5px 5px 0;
 }
 
-.choose-1 {
+.login-choose-1 {
   border-radius: 5px 0 0 5px;
   border: #c4c4c4 1px solid;
   color: #c4c4c4;
   background-color: #3e1068;
 }
 
-.username {
+.login-username {
   display: flex;
   flex-direction: column;
   width: 40vw;
@@ -110,7 +110,7 @@
   margin-right: 5vw;
 }
 
-.username .label {
+.login-username .login-label {
   height: 6vh;
   font-size: x-large;
   margin-top: 15px;
@@ -118,7 +118,7 @@
   color: #3e1068;
 }
 
-.username .input {
+.login-username .login-input {
   border: 0;
   width: 25vw;
   height: 10vh;
@@ -129,11 +129,11 @@
   outline: none;
 }
 
-.username:hover .input:hover {
+.login-username:hover .login-input:hover {
   outline: none;
 }
 
-.forgot-password {
+.login-forgot-password {
   margin-left: 20vw;
   margin-top: 3vh;
   color: green;
