@@ -56,7 +56,6 @@ export const Profile = () => {
       <hr className="website_hr"></hr>
       <div className="profile_bio">
         <h5 className="profile_update_bio">
-          {" "}
           Your bio
           <span className="para_profile_update_bio">
             <br></br>Write a Short Introduction

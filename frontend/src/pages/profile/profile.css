@@ -100,7 +100,7 @@
 {
   height: 15vh;
   width: 20vw;
-  margin-left: 14vw;
+  margin-left: 15vw;
   font-size: medium;
   border-radius: 5px;
   padding-bottom: 5px;
@@ -121,7 +121,7 @@
   margin-top: 4vh;
 }
 .profile-current-password,.profile-new-password{
-  margin-left: 13vw;
+  margin-left: 14vw;
   height: 5vh;
   width: 20vw;
   outline: none;
@@ -130,7 +130,7 @@
 }
 .profile-retype-password
 {
-  margin-left: 13.5vw;
+  margin-left: 14.5vw;
   height: 5vh;
   width: 20vw;
   outline: none;
@@ -138,7 +138,7 @@
   box-shadow: 0 0 0 0;
 }
 .profile-new-password{
-  margin-left: 14.5vw;
+  margin-left: 15.4vw;
   height: 5vh;
   width: 20vw;
   outline: none;
