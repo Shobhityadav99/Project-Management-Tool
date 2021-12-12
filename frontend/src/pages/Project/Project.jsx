@@ -9,8 +9,8 @@ export const Project = () => {
       <Navbar />
       <Searchbar />
       <div className="project-card-container">
-        <Card />
-        <Card />
+        <Card board_id="b-1" card_id="c-1" />
+        <Card board_id="b-2" card_id="c-2"/>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@
 .edit-text {
     margin: 0.5vh;
     margin-left: 1vw;
-    font-size: x-large;
+    font-size: large;
     max-width: 280px;
     margin-top: 10px;
 }
@@ -23,16 +23,21 @@
     margin: 0.5vw;
 }
 
+.card_board{
+    height: 365px;
+    width: 300px;
+}
+
 .edit-button{
     margin-top: 1vh;
-    margin-left: 4.3vw;
+    margin-left: 10vw;
     background-color: grey;
     border: 0;
     cursor: pointer;
 }
 
 .addButton{
-    font-size: xx-large;
+    font-size: x-large;
     display: flex;
     align-items: center;
     margin-left: 130px;
@@ -40,13 +45,13 @@
 }
 
 .trashButton{
-    font-size: large;
+    font-size: medium;
     display: flex;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 136px;
     cursor: pointer;
 }
 
 .card-trash-bottom{
-    margin-top: 335px;
+    margin-top: 5px;
 }
