@@ -59,11 +59,15 @@
 .login-input-container {
   margin-top: 2vh;
   width: 30vw;
-  height: 40vh;
+  height: 45vh;
   background-color: #c4c4c4;
   border-radius: 3%;
   box-shadow: 20px 20px #482276;
   font-family: 'Archivo', sans-serif;
+}
+
+.login-button-forgotpassword-container {
+  margin-top: 7vh;
 }
 
 .login-choose-container {
@@ -106,7 +110,7 @@
   display: flex;
   flex-direction: column;
   width: 40vw;
-  height: 22vh;
+  height: 25vh;
   margin-right: 5vw;
 }
 
