@@ -1,43 +1,26 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: white;
+  background-color: white;
 }
 
-.flexbox {
-    display: flex;
-    justify-content: space-between;
-
-    width: 100%;
-    max-width: 768px;
-    height: 100vh;
-
-    overflow: hidden;
-
-    margin: 0 auto;
-    padding: 15px;
+.board {
+  height: 370px;
+  width: 300px;
+  background-color: aqua;
 }
 
-.flexbox .board {
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    max-width: 300px;
-
-    background-color: black;
-
-    padding: 15px;
-}
-
-.flexbox .board .card {
-    padding: 15px 25px;
-    background-color: white;
-
-    cursor: pointer;
-    margin-bottom: 15px;
+.task {
+  margin-top: 5px;
+  text-align: center;
+  justify-content: center;
+  font-size: large;
+  background-color: green;
+  height: 20px;
+  width: 300px;
+  cursor: pointer;
 }

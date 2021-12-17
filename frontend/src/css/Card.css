@@ -11,47 +11,41 @@
 }
 
 .edit-text {
-    margin: 0.5vh;
-    margin-left: 1vw;
-    font-size: large;
-    max-width: 280px;
-    margin-top: 10px;
+  margin: 0.5vh;
+  margin-left: 1vw;
+  font-size: large;
+  max-width: 280px;
+  margin-top: 10px;
 }
 
-.label-text{
-    background-color: chartreuse;
-    margin: 0.5vw;
+.label-text {
+  background-color: chartreuse;
+  margin: 0.5vw;
 }
 
-.card_board{
-    height: 365px;
-    width: 300px;
+.edit-button {
+  margin-top: 1vh;
+  margin-left: 10vw;
+  background-color: grey;
+  border: 0;
+  cursor: pointer;
 }
 
-.edit-button{
-    margin-top: 1vh;
-    margin-left: 10vw;
-    background-color: grey;
-    border: 0;
-    cursor: pointer;
+.addButton {
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+  margin-left: 133px;
+  cursor: pointer;
 }
 
-.addButton{
-    font-size: x-large;
-    display: flex;
-    align-items: center;
-    margin-left: 130px;
-    cursor: pointer;
+.trashButton {
+  font-size: medium;
+  display: flex;
+  margin-left: 136px;
+  cursor: pointer;
 }
 
-.trashButton{
-    font-size: medium;
-    display: flex;
-    margin-top: 5px;
-    margin-left: 136px;
-    cursor: pointer;
-}
-
-.card-trash-bottom{
-    margin-top: 5px;
+.card-trash-bottom {
+  margin-top: 5px;
 }

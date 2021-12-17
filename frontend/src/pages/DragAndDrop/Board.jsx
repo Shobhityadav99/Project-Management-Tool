@@ -1,11 +1,11 @@
 import React from 'react'
+import "./main.css";
 
-const DragAndDrop = (props) => {
+const Board = props => {
 
     const drop = e => {
         e.preventDefault();
         const card_id = e.dataTransfer.getData('card_id');
-
         const card = document.getElementById(card_id);
         card.style.display = 'block';
 
@@ -19,13 +19,12 @@ const DragAndDrop = (props) => {
     return (
         <div
          id={props.id}
-         className={props.className}
+         className="board"
          onDrop={drop}
          onDragOver={dragOver}>
-            
             {props.children}
         </div>
     )
 }
 
-export default DragAndDrop
+export default Board;

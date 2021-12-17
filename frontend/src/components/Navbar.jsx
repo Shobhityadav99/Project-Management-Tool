@@ -20,7 +20,7 @@ export const Navbar = () => {
       </div>
       <div className="navbar-right">
         <i className="fas fa-bell"></i>
-        <i class="fas fa-user-circle navbar-right-usericon"></i>
+        <i className="fas fa-user-circle navbar-right-usericon"></i>
         <div className="navbar-right-user">Nishchay</div>
         <i className="fas fa-chevron-down navbar-right-downicon"></i>
       </div>

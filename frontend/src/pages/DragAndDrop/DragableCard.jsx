@@ -1,8 +1,8 @@
 import React from 'react'
 import './main.css';
 
-function Card(props) {
-
+const DragableCard = (props) => {
+    
     const dragStart = e => {
         const target = e.target;
 
@@ -20,7 +20,7 @@ function Card(props) {
     return (
         <div
         id={props.id}
-        className={props.className}
+        className="task"
         draggable="true"
         onDragStart={dragStart}
         onDragOver={dragOver}>
@@ -29,4 +29,4 @@ function Card(props) {
     )
 }
 
-export default Card
+export default DragableCard

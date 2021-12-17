@@ -8,7 +8,6 @@ import {MyAccount} from "./pages/MyAccount/MyAccount";
 import { Project } from "./pages/Project/Project";
 import Register from "./pages/Register/Register";
 import {Profile} from './pages/profile/profile';
-import {Sesk} from './pages/DragAndDrop/sesk';
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
         <Route exact path='/project' element={<Project />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/register' element={<Register />} />
-        <Route exact path='/drag' element={<Sesk />} />
+        {/* <Route exact path='/drag' element={<Sesk />} /> */}
       </Routes>
     </Router>
   );

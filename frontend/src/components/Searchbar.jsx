@@ -13,7 +13,7 @@ export const Searchbar = () => {
             <div className="searchbar-right">
             <i className="fas fa-calendar-alt searchbar-right-calendaricon"></i>
             <i className="fas fa-plus searchbar-right-plusicon"></i>
-            <i class="fas fa-user-circle searchbar-right-usericon"></i>
+            <i className="fas fa-user-circle searchbar-right-usericon"></i>
             Nishchay and 4 others
             </div>
         </div>
