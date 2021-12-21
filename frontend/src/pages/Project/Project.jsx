@@ -9,7 +9,7 @@ const DummyData = Dummy.cards;
 export const Project = () => {
   return (
     <div className="project-container">
-      <Navbar />
+      <Navbar/>
       <Searchbar />
       <div className="project-card-container">
         {DummyData.map((card) => {

@@ -1,26 +1,24 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   background-color: white;
 }
 
 .board {
+  margin-top: 5px;
   height: 370px;
-  width: 300px;
+  width: 239px;
   background-color: aqua;
 }
 
 .task {
-  margin-top: 5px;
+  margin-top: 10px;
   text-align: center;
   justify-content: center;
   font-size: large;
-  background-color: green;
-  height: 20px;
-  width: 300px;
+  background-color: crimson;
+  color: white;
+  justify-self: center;
+  height: 30px;
+  width: 239px;
+  border-radius: 5px;
   cursor: pointer;
 }
