@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import loginImage from "../../resources/loginImage.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../shared/context/auth-context";
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+  
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+  
+  const authSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      };
+      const responseData = await fetch(
+        "http://localhost:5000/user/login",
+        requestOptions
+        );
+        console.log(responseData);
+        auth.login(responseData.user.id);
+        if(responseData.ok === true){
+          navigate('/dashboard');
+        }
+      } catch (err) {};
+  };
+
   return (
     <>
       <div className="login-navbar">
@@ -17,22 +55,37 @@ const Login = () => {
         <div className="login-container">
           <div className="login-choose-container">
             <div className="login-choose-1">Login</div>
-            <div className="login-choose-2">Register</div>
-          </div>
-          <div className="login-input-container">
-            <div className="login-username">
-              <label className="login-label">Username:</label>
-              <input className="login-input" />
-              <label className="login-label">Password:</label>
-              <input type="password" className="login-input" />
-            </div>
-            <div className="login-forgot-password">
-              <a href="/">Forgot Password</a>
-            </div>
-            <Link to="/project">
-              <button className="login-submit-button">Login</button>
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <div className="login-choose-2">Register</div>
             </Link>
           </div>
+          <form onSubmit={authSubmitHandler}>
+            <div className="login-input-container">
+              <div className="login-username">
+                <label className="login-label">Email:</label>
+                <input
+                  className="login-input"
+                  id="email"
+                  value={email}
+                  onChange={emailHandler}
+                />
+                <label className="login-label">Password:</label>
+                <input
+                  type="password"
+                  className="login-input"
+                  id="password"
+                  value={password}
+                  onChange={passwordHandler}
+                />
+              </div>
+              <div className="login-forgot-password">
+                <a href="/">Forgot Password</a>
+              </div>
+              <button type="submit" className="login-submit-button">
+                Login
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>

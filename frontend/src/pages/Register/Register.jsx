@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Register.css";
 import registerImage from "../../resources/loginImage.png";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../shared/context/auth-context";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const authSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password,name: name }),
+      };
+      const responseData = await fetch(
+        "http://localhost:5000/user/register",
+        requestOptions
+      );
+      console.log(responseData);
+      if (responseData.ok === true) {
+        navigate("/dashboard");
+      }
+      auth.login(responseData.user.id);
+    } catch (err) {}
+  };
   return (
     <>
       <div className="register-navbar">
@@ -11,31 +52,51 @@ const Register = () => {
         <div className="register-navbar-center-item3">About Us</div>
       </div>
       <div className="register-page">
-      <div className="register-image-container">
-        <img src={registerImage} alt="" className="register-image"/>
-      </div>
-      <div className="register-container">
-      <div className="register-choose-container">
-        <div className="choose-01">Login</div>
-        <div className="choose-02 active">Register</div>
-      </div>
-      <div className="register-input-container">
-        <div className="register-username">
-          <label className="register-label">Username:</label>
-		  <input type="text" className="register-input" />
-          <label className="register-label">Email:</label>
-          <input  type="text" className="register-input" />
-          <label className="register-label">Password:</label>
-          <input type="text" className="register-input" />
-		  <label className="register-label">Confirm Password:</label>
-          <input type="text"  className="register-input" />
+        <div className="register-image-container">
+          <img src={registerImage} alt="" className="register-image" />
         </div>
-        <Link to="/project">
-        <button className="register-submit-button">Register</button>
-        </Link>
+        <div className="register-container">
+          <div className="register-choose-container">
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <div className="choose-01">Login</div>
+            </Link>
+            <div className="choose-02 active">Register</div>
+          </div>
+          <form onSubmit={authSubmitHandler}>
+          <div className="register-input-container">
+            <div className="register-username">
+              <label className="register-label">Name:</label>
+              <input
+                type="text"
+                className="register-input"
+                id="name"
+                value={name}
+                onChange={nameHandler}
+              />
+              <label className="register-label">Email:</label>
+              <input
+                type="text"
+                className="register-input"
+                id="email"
+                value={email}
+                onChange={emailHandler}
+              />
+              <label className="register-label">Password:</label>
+              <input
+                type="text"
+                className="register-input"
+                id="password"
+                value={password}
+                onChange={passwordHandler}
+              />
+              <label className="register-label">Confirm Password:</label>
+              <input type="text" className="register-input" />
+            </div>
+              <button type="submit" className="register-submit-button">Register</button>
+          </div>
+          </form>
+        </div>
       </div>
-      </div>
-    </div>
     </>
   );
 };
