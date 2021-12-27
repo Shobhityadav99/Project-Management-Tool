@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import "./Register.css";
 import registerImage from "../../resources/loginImage.png";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../shared/context/auth-context";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const Register = () => {
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -25,24 +25,15 @@ const Register = () => {
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-    try {
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password,name: name }),
-      };
-      const responseData = await fetch(
-        "http://localhost:5000/user/register",
-        requestOptions
-      );
-      console.log(responseData);
-      if (responseData.ok === true) {
-        navigate("/dashboard");
-      }
-      auth.login(responseData.user.id);
-    } catch (err) {}
+    const receivedData = {name: name, email: email, password: password};
+      axios.post('http://localhost:5000/user/register', receivedData)
+      .then(response => {
+        console.log(response);
+        navigate('/dashboard');
+      })
+      .catch (err => {
+      console.log(err);
+    });
   };
   return (
     <>
@@ -83,14 +74,14 @@ const Register = () => {
               />
               <label className="register-label">Password:</label>
               <input
-                type="text"
+                type="password"
                 className="register-input"
                 id="password"
                 value={password}
                 onChange={passwordHandler}
               />
               <label className="register-label">Confirm Password:</label>
-              <input type="text" className="register-input" />
+              <input type="password" className="register-input" />
             </div>
               <button type="submit" className="register-submit-button">Register</button>
           </div>

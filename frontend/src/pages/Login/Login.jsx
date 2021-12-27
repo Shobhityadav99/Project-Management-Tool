@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import loginImage from "../../resources/loginImage.png";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../shared/context/auth-context";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
@@ -21,24 +20,15 @@ const Login = () => {
   
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-    try {
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
-      };
-      const responseData = await fetch(
-        "http://localhost:5000/user/login",
-        requestOptions
-        );
-        console.log(responseData);
-        auth.login(responseData.user.id);
-        if(responseData.ok === true){
-          navigate('/dashboard');
-        }
-      } catch (err) {};
+    const receivedData = {email: email, password: password};
+      axios.post('http://localhost:5000/user/login', receivedData)
+      .then(response => {
+        console.log(response);
+        navigate('/dashboard');
+      })
+      .catch(err =>{
+        console.log(err);
+      }); 
   };
 
   return (
@@ -81,7 +71,7 @@ const Login = () => {
               <div className="login-forgot-password">
                 <a href="/">Forgot Password</a>
               </div>
-              <button type="submit" className="login-submit-button">
+              <button className="login-submit-button">
                 Login
               </button>
             </div>
