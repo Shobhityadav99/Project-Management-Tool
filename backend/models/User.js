@@ -16,7 +16,10 @@ const userSchema = new mongoose.Schema({
     minlength: 10,
   },
   projects: [{
-    type: mongoose.Types.ObjectId,
+    title: {
+      type: String,
+      required: true
+    },
   }]
 });
 

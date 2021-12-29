@@ -1,16 +1,17 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "../css/ProjectCard.css";
-import dummyData from "../resources/dummy.json";
 
-const Dummydata = dummyData.data;
-export const ProjectCard = () => {
+export const ProjectCard = props => {
+  const navigate=useNavigate();
+  const projects = props.projects;
   return (
     <>
       <div className="project-card-container">
-        {Dummydata.map((data) => {
+        {projects.map((d) => {
           return (
             <div className="project-square-container">
-              <label>{data.title}</label>
+              <label onClick={navigate(`/project/:${d.id}`)}>{d.title}</label>
             </div>
           );
         })}

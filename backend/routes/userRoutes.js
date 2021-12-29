@@ -38,4 +38,19 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get('/dashboard/:userId', async (req,res) => {
+  try{
+    const user = await User.findById(req.params.userId);
+    console.log(user);
+    if (!user) {
+      return res.status(500).send("Invalid User");
+    }
+    res.json({
+      projects: user.projects
+    })
+  }catch(e){
+    console.log(e);
+  }
+})
+
 module.exports = router;

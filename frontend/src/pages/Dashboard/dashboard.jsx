@@ -1,9 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
 import { Navbar } from "../../components/Navbar";
 import { ProjectCard } from "../../components/ProjectCard";
+import axios from 'axios';
 import "./dashboard.css";
 
 export const Dashboard = () => {
+  let projects=[];
+  useEffect(() => {
+    const data = axios.get("http://localhost:5000"+window.location.pathname)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err =>{
+        console.log(err);
+      }); 
+      projects = data.projects;
+  },[]);
   return (
     <React.Fragment>
       <Navbar />
@@ -21,10 +34,10 @@ export const Dashboard = () => {
           <div className="dashboard-sideline"></div>
         </div>
         <div className="dashboard-project-blocks">
-          <label className="dashboard-project-blocks-label">Recents</label>
-          <ProjectCard />
+          {/* <label className="dashboard-project-blocks-label">Recents</label>
+          <ProjectCard /> */}
           <label className="dashboard-project-blocks-label">All Projects</label>
-          <ProjectCard />
+          <ProjectCard projects={projects}/>
         </div>
       </div>
     </React.Fragment>

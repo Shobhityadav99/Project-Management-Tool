@@ -24,7 +24,7 @@ const Login = () => {
       axios.post('http://localhost:5000/user/login', receivedData)
       .then(response => {
         console.log(response);
-        navigate('/dashboard');
+        navigate(`/user/dashboard/${response.data.user.id}`);
       })
       .catch(err =>{
         console.log(err);

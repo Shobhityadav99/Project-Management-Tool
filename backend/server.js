@@ -25,6 +25,7 @@ app.use((req, res, next) => {
 app.use("/user", userRoutes);
 app.use("/project", projectRoutes);
 
+
 app.listen(PORT, () => {
   console.log(`Server is up on port ${PORT}`);
 });

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard/dashboard";
 import Login from "./pages/Login/Login";
@@ -10,28 +10,16 @@ import Register from "./pages/Register/Register";
 import { Profile } from './pages/profile/profile';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(false);
-
-  const login = useCallback(uid => {
-    setIsLoggedIn(true);
-    setUserId(uid);
-  }, []);
-
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-    setUserId(null);
-  }, []);
-
+  
   return (
       <>
       <Router>
       <Routes>
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/account' element={<MyAccount />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/project' element={<Project />} />
-        <Route exact path='/login' element={<Login />} />
+        {/* <Route path='/profile/:userId' element={<Profile />} /> */}
+        <Route path='/user/account/:userId' element={<MyAccount />} />
+        <Route path='/user/dashboard/:userId' element={<Dashboard />} />
+        <Route path='/project/:ProjectId' element={<Project />} />
+        <Route exact path='/' element={<Login />} />
         <Route exact path='/register' element={<Register />} />
       </Routes>
       </Router>
