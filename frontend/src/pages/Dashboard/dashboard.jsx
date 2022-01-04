@@ -7,16 +7,22 @@ import "./dashboard.css";
 
 export const Dashboard = () => {
   let projects=[];
-  useEffect(() => {
-    const data = axios.get("http://localhost:5000"+window.location.pathname)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(err =>{
-        console.log(err);
-      }); 
-      projects = data.projects;
-  },[]);
+  let p=[];
+  const fetchProjects = () => {
+      axios.get("http://localhost:5000"+window.location.pathname)
+        .then(response => {
+          // console.log(response);
+          response.data.projects.map(m => {
+            projects.push(m);
+          })
+        })
+        .catch(err =>{
+          console.log(err);
+        }); 
+      };
+      fetchProjects();
+      console.log(projects);
+  
   return (
     <React.Fragment>
       <Navbar />
