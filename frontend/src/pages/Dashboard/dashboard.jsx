@@ -5,10 +5,13 @@ import "./dashboard.css";
 import { useEffect, useState } from "react";
 import { ProjectCard } from "../../components/ProjectCard";
 import LoadingSpinner from "../../shared/LoadingSpinner";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [projects,setProjects]= useState([]);
+  const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
     const fetchProjects = async () => {
       await axios
@@ -35,7 +38,7 @@ export const Dashboard = () => {
       <div className="dashboard-container">
         <div className="dashboard-leftpane">
           <div className="dashboard-sidebar">
-            <div className="dashboard-sidebar-label">My Profile</div>
+            <div className="dashboard-sidebar-label" onClick={() => navigate(`/user/account/updateProfile/${userId}`)}>My Profile</div>
             <div className="dashboard-sidebar-label">All Projects</div>
             <div className="dashboard-sidebar-label">Deadlines</div>
             <div className="dashboard-sidebar-label">Messages</div>

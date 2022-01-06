@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 10,
   },
+  bio: {
+    type: String,
+  },
   projects: [{
     title: {
       type: String,
