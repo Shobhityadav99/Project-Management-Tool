@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../css/ProjectCard.css";
 
 export const ProjectCard = (props) => {
@@ -9,8 +9,8 @@ export const ProjectCard = (props) => {
     return (
       <div className="place-list center">
         <>
-          <h2>No places found. Maybe create one?</h2>
-          <button to="/">Share Place</button>
+          <h2>No projects found. Maybe create one?</h2>
+          <button to="/">Create Project</button>
         </>
       </div>
     );

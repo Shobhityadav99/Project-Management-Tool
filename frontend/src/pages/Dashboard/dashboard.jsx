@@ -11,27 +11,26 @@ export const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [projects,setProjects]= useState([]);
-  const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
     const fetchProjects = async () => {
       await axios
-        .get("http://localhost:5000" + window.location.pathname)
-        .then((response) => {
-          response.data.projects.map((m) => {
-            projects.push(m);
-            return setProjects(projects);
-          });
-        })
-        .catch((err) => {
-          console.log(err);
+      .get("http://localhost:5000" + window.location.pathname)
+      .then((response) => {
+        response.data.projects.map((m) => {
+          projects.push(m);
+          return setProjects(projects);
         });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     };
     fetchProjects();
-    console.log(projects);
-    if (projects.length > 0) setIsLoading(false);
   }, []);
+  if (projects.length > 0) setIsLoading(false);
   console.log(projects);
-
+  
+  const userId = window.location.pathname.split("/").pop();
   return (
     <React.Fragment>
       <Navbar />
