@@ -10,7 +10,7 @@ module.exports = async function (req, res, next) {
   }
   const bearerToken = bearerHeader.split(" ")[1];
   try {
-    const decoded = jwt.verify(bearerToken, process.env.JWT_SECRET);
+    jwt.verify(bearerToken, process.env.JWT_SECRET);
   } catch (err) {
     return res.json({ msg: "token invalid" });
   }
