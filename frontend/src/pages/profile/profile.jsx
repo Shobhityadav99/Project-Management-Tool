@@ -15,12 +15,12 @@ export const Profile = () => {
         <hr></hr>
       </div>
       <div className="username_profile">
-        <h5>Username</h5>
+        <h5>Name</h5>
         <div className="username_profile_input">
           <input
             className="username_input"
             type="text"
-            placeholder="username"
+            placeholder="name"
           ></input>
         </div>
       </div>
