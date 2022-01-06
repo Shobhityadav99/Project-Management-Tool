@@ -23,7 +23,7 @@ const Login = () => {
     const receivedData = {email: email, password: password};
       axios.post('http://localhost:5000/user/login', receivedData)
       .then(response => {
-        console.log(response);
+        console.log(response.data.token);
         navigate(`/user/dashboard/${response.data.user.id}`);
       })
       .catch(err =>{

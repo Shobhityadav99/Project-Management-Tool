@@ -1,3 +1,5 @@
+/** @format */
+
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -15,12 +17,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 10,
   },
-  projects: [{
-    title: {
-      type: String,
-      required: true
+  bio: {
+    type: String,
+    minlength: 100,
+  },
+  projects: [
+    {
+      title: {
+        type: String,
+        required: true,
+      },
     },
-  }]
+  ],
 });
 
 module.exports = mongoose.model("User", userSchema);
