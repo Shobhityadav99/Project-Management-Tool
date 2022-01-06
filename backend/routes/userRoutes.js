@@ -2,6 +2,33 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
+
+router.post("/account/updateProfile/:userId",async (req,res)=>{
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      res.status(404).json("User not found");
+    }
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
+
+
+router.patch("/account/updateProfile/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+  if (!user) {
+    res.status(404).json("User not found");
+  }
+    await user.update({bio: req.body.bio})
+    setTimeout(res.status(200).json(user), 5000)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/register", async (req, res) => {
   // const salt = await bcrypt.genSaltSync(8);
   // const hashedPass = bcrypt.hashSync(req.body.password, salt);
@@ -10,6 +37,7 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    bio: ""
   });
   try {
     await newUser.save();
@@ -31,26 +59,26 @@ router.post("/login", async (req, res) => {
     // }
     res.json({
       message: "Logged IN",
-      user: user.toObject({ getters: true })
+      user: user.toObject({ getters: true }),
     });
   } catch (err) {
     res.status(404).json(err);
   }
 });
 
-router.get('/dashboard/:userId', async (req,res) => {
-  try{
+router.get("/dashboard/:userId", async (req, res) => {
+  try {
     const user = await User.findById(req.params.userId);
     console.log(user);
     if (!user) {
       return res.status(500).send("Invalid User");
     }
     res.json({
-      projects: user.projects
-    })
-  }catch(e){
+      projects: user.projects,
+    });
+  } catch (e) {
     console.log(e);
   }
-})
+});
 
 module.exports = router;

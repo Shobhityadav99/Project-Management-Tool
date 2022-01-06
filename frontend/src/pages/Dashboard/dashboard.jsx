@@ -4,32 +4,30 @@ import { Navbar } from "../../components/Navbar";
 import { ProjectCard } from "../../components/ProjectCard";
 import axios from 'axios';
 import "./dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   let projects=[];
-  let p=[];
-  const fetchProjects = () => {
-      axios.get("http://localhost:5000"+window.location.pathname)
-        .then(response => {
-          // console.log(response);
-          response.data.projects.map(m => {
-            projects.push(m);
-          })
-        })
-        .catch(err =>{
-          console.log(err);
-        }); 
-      };
-      fetchProjects();
-      console.log(projects);
-  
+  const userId = window.location.pathname.split("/").pop();
+  console.log(userId);
+  useEffect(() => {
+    const data = axios.get("http://localhost:5000"+window.location.pathname)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err =>{
+        console.log(err);
+      }); 
+      projects = data.projects;
+  },[]);
   return (
     <React.Fragment>
       <Navbar />
       <div className="dashboard-container">
         <div className="dashboard-leftpane">
           <div className="dashboard-sidebar">
-            <div className="dashboard-sidebar-label">My Profile</div>
+            <div className="dashboard-sidebar-label" onClick={() => navigate(`/user/account/updateProfile/${userId}`)}>My Profile</div>
             <div className="dashboard-sidebar-label">All Projects</div>
             <div className="dashboard-sidebar-label">Deadlines</div>
             <div className="dashboard-sidebar-label">Messages</div>
