@@ -7,6 +7,7 @@ import DragableCard from "../pages/DragAndDrop/DragableCard";
 export const Card = (props) => {
   const onTitleSave = (val) => {
     props.title = val;
+    
     console.log("Edited Value -> ", val);
   };
 
@@ -29,7 +30,7 @@ export const Card = (props) => {
           {data.map((task) => {
             console.log(task);
             return (
-              <DragableCard id={`${task}69`}>
+              <DragableCard id={`${task}69`} key={`${task}69`}>
                 <p>{task}</p>
               </DragableCard>
             );

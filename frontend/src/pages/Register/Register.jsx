@@ -26,10 +26,11 @@ const Register = () => {
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     const receivedData = {name: name, email: email, password: password};
+    console.log(receivedData);
       axios.post('http://localhost:5000/user/register', receivedData)
       .then(response => {
-        console.log(response);
-        navigate(`/user/dashboard/${response.data._id}`);
+        console.log(response.data._id);
+        navigate(`/user/dashboard/${response.data.user._id}`);
       })
       .catch (err => {
       console.log(err);

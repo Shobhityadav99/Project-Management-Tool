@@ -19,16 +19,13 @@ const userSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
-    minlength: 100,
   },
-  projects: [
-    {
-      title: {
-        type: String,
-        required: true,
-      },
+  projects: [{
+    title: {
+      type: String,
+      required: true
     },
-  ],
+  }],
 });
 
 module.exports = mongoose.model("User", userSchema);

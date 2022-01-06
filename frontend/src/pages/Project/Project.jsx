@@ -1,18 +1,32 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Navbar } from "../../components/Navbar";
 import { Searchbar } from "../../components/Searchbar";
 import { Card } from "../../components/Card";
-import Dummy from "../../resources/project.json";
+import axios from "axios";
 import "./Project.css";
 
-const DummyData = Dummy.cards;
 export const Project = () => {
+  const [projectData,setProjectData] = useState([]);
+  useEffect(() => {
+    const fetchProjectData = async () => {
+      await axios
+      .get("http://localhost:5000" + window.location.pathname)
+      .then((response) => {
+        console.log(response.data.project.cards);
+        setProjectData(response.data.project.cards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
+    fetchProjectData();
+  }, []);
   return (
     <div className="project-container">
       <Navbar/>
       <Searchbar />
       <div className="project-card-container">
-        {DummyData.map((card) => {
+        {projectData.map((card) => {
           return (
             <Card key={`${card.title}69`} title={card.title} data={card.data} />
           );

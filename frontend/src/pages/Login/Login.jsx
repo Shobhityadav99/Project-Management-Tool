@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import loginImage from "../../resources/loginImage.png";
 import { Link } from "react-router-dom";
@@ -23,7 +23,7 @@ const Login = () => {
     const receivedData = {email: email, password: password};
       axios.post('http://localhost:5000/user/login', receivedData)
       .then(response => {
-        console.log(response.data.token);
+        console.log(response);
         navigate(`/user/dashboard/${response.data.user.id}`);
       })
       .catch(err =>{
