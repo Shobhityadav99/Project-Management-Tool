@@ -10,11 +10,14 @@ import { useNavigate } from "react-router-dom";
 export const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const [projects,setProjects]= useState([]);
+  const [projects, setProjects]= useState([]);
   useEffect(() => {
     const fetchProjects = async () => {
+      console.log(window.location.pathname);
       await axios
-      .get("http://localhost:5000" + window.location.pathname)
+      .get("http://localhost:5000" + window.location.pathname, {
+        headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
+      })
       .then((response) => {
         response.data.projects.map((m) => {
           projects.push(m);
@@ -26,12 +29,22 @@ export const Dashboard = () => {
       });
     };
     fetchProjects();
+    
+    // If the user isn't logged in, redirect them to login page
+    const loginCheck = () => {
+      if(localStorage.getItem('authorization-token') == null)
+        navigate('/login');
+    }
+    loginCheck()
   }, []);
   if (projects.length > 0) setIsLoading(false);
   console.log(projects);
   
-  const userId = window.location.pathname.split("/").pop();
-  return (
+
+
+const userId = window.location.pathname.split("/").pop();
+return (
+  <>
     <React.Fragment>
       <Navbar />
       <div className="dashboard-container">
@@ -57,6 +70,7 @@ export const Dashboard = () => {
           {!isLoading && projects && <ProjectCard projects={projects} />}
         </div>
       </div>
-    </React.Fragment>
+      </React.Fragment>
+</>
   );
 };

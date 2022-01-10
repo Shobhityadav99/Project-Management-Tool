@@ -24,9 +24,8 @@ export const Profile = () => {
   const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
     const getData = async () => {
-      const receivedData = { email: email };
       await axios
-        .post(`http://localhost:5000/user/account/updateProfile/${userId}`, receivedData)
+        .post(`http://localhost:5000/user/account/updateProfile/${userId}`)
         .then((response) => {
           setEmail(response.data.email);
           setName(response.data.name);
@@ -164,6 +163,7 @@ export const Profile = () => {
         </div>
         <br />
         <br />
+        <div>{bio}</div>
         <Button variant="primary" className="btn btn-sm password_button">
           Update Password
         </Button>
