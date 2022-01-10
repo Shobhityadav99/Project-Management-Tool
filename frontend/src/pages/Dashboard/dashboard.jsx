@@ -56,7 +56,10 @@ return (
             <div className="dashboard-sidebar-label">Messages</div>
             <div className="dashboard-sidebar-label">Notifications</div>
             <div className="dashboard-sidebar-label">Settings</div>
-            <div className="dashboard-sidebar-label">Logout</div>
+            <div className="dashboard-sidebar-label" onClick={() => {
+              localStorage.clear();
+              navigate(`/login`);
+              }}>Logout</div>
           </div>
           <div className="dashboard-sideline"></div>
         </div>
