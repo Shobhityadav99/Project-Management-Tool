@@ -30,7 +30,7 @@ const Register = () => {
       .then(response => {
         console.log(response);
         localStorage.setItem('authorization-header', JSON.stringify(response.data.token));
-        navigate(`/user/dashboard/${response.data._id}`);
+        navigate(`/user/dashboard/${response.data.user._id}`);
       })
       .catch (err => {
       console.log(err);

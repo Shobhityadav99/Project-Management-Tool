@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
         if (err) {
           return res.json(err);
         }
-        res.json({ newUser, token });
+        res.json({ user: newUser, token });
       },
     );
   } catch (err) {
@@ -96,7 +96,6 @@ router.get("/dashboard/:userId", authMiddleware, async (req, res) => {
     if (!user) {
       return res.status(500).send("Invalid User");
     }
-
     // Make sure that the user currently logged in can't access the dashboard of other users
     try {
       const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
@@ -106,7 +105,7 @@ router.get("/dashboard/:userId", authMiddleware, async (req, res) => {
     } catch (err) {
       return res.status(401).json({ msg: "token invalid" });
     }
-    
+
     res.json({
       projects: user.projects,
     });
