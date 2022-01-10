@@ -19,9 +19,9 @@ function App() {
         <Route path='/profile/:userId' element={<Profile />} />
         <Route path='/user/account/:userId' element={<MyAccount />} />
         <Route path='/user/account/updateProfile/:userId' element={<Profile />} />
-        <Route path='/user/dashboard/:userId' element={<Dashboard />} />
+        <Route path='/user/dashboard/:userId' method='POST' element={<Dashboard />} />
         <Route path='/project/:id' element={<Project />} />
-        <Route exact path='/' element={<Login />} />
+        <Route exact path='/login' element={<Login />} />
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/new-project' element={<NewProject />} />
       </Routes>

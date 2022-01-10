@@ -42,7 +42,17 @@ router.post("/register", async (req, res) => {
   });
   try {
     await newUser.save();
-    res.status(200).json(newUser);
+    jwt.sign(
+      { newUser },
+      process.env.JWT_SECRET,
+      { expiresIn: "1hr" },
+      (err, token) => {
+        if (err) {
+          return res.json(err);
+        }
+        res.json({ user: newUser, token });
+      },
+    );
   } catch (err) {
     res.status(500).json(err);
   }
@@ -86,6 +96,16 @@ router.get("/dashboard/:userId", authMiddleware, async (req, res) => {
     if (!user) {
       return res.status(500).send("Invalid User");
     }
+    // Make sure that the user currently logged in can't access the dashboard of other users
+    try {
+      const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
+      console.log(decoded);
+      if(decoded.user._id != req.params.userId)
+        return res.status(401).send("Invalid session");
+    } catch (err) {
+      return res.status(401).json({ msg: "token invalid" });
+    }
+
     res.json({
       projects: user.projects,
     });

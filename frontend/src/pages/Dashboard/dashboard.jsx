@@ -11,11 +11,14 @@ import {NewProject} from "../../components/NewProject";
 export const Dashboard = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  const [projects,setProjects]= useState([]);
+  const [projects, setProjects]= useState([]);
   useEffect(() => {
     const fetchProjects = async () => {
+      console.log(window.location.pathname);
       await axios
-      .get("http://localhost:5000" + window.location.pathname)
+      .get("http://localhost:5000" + window.location.pathname, {
+        headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
+      })
       .then((response) => {
         response.data.projects.map((m) => {
           projects.push(m);
@@ -27,12 +30,22 @@ export const Dashboard = () => {
       });
     };
     fetchProjects();
+    
+    // If the user isn't logged in, redirect them to login page
+    const loginCheck = () => {
+      if(localStorage.getItem('authorization-token') == null)
+        navigate('/login');
+    }
+    loginCheck()
   }, []);
   if (projects.length > 0) setIsLoading(false);
   console.log(projects);
   
-  const userId = window.location.pathname.split("/").pop();
-  return (
+
+
+const userId = window.location.pathname.split("/").pop();
+return (
+  <>
     <React.Fragment>
       <Navbar />
       <div className="dashboard-container">
@@ -44,7 +57,10 @@ export const Dashboard = () => {
             <div className="dashboard-sidebar-label">Messages</div>
             <div className="dashboard-sidebar-label">Notifications</div>
             <div className="dashboard-sidebar-label">Settings</div>
-            <div className="dashboard-sidebar-label">Logout</div>
+            <div className="dashboard-sidebar-label" onClick={() => {
+              localStorage.clear();
+              navigate(`/login`);
+              }}>Logout</div>
           </div>
           <div className="dashboard-sideline"></div>
         </div>
@@ -64,6 +80,7 @@ export const Dashboard = () => {
             </div>
         </div>
       </div>
-    </React.Fragment>
+      </React.Fragment>
+</>
   );
 };
