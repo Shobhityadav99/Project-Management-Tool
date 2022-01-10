@@ -8,6 +8,7 @@ import { MyAccount } from "./pages/MyAccount/MyAccount";
 import { Project } from "./pages/Project/Project";
 import Register from "./pages/Register/Register";
 import { Profile } from './pages/profile/profile';
+import { NewProject } from "./components/NewProject";
 
 function App() {
   
@@ -15,13 +16,14 @@ function App() {
       <>
       <Router>
       <Routes>
-        {/* <Route path='/profile/:userId' element={<Profile />} /> */}
+        <Route path='/profile/:userId' element={<Profile />} />
         <Route path='/user/account/:userId' element={<MyAccount />} />
         <Route path='/user/account/updateProfile/:userId' element={<Profile />} />
         <Route path='/user/dashboard/:userId' element={<Dashboard />} />
         <Route path='/project/:id' element={<Project />} />
         <Route exact path='/' element={<Login />} />
         <Route exact path='/register' element={<Register />} />
+        <Route exact path='/new-project' element={<NewProject />} />
       </Routes>
       </Router>
       </>

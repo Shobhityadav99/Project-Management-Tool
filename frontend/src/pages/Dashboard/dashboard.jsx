@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ProjectCard } from "../../components/ProjectCard";
 import LoadingSpinner from "../../shared/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import {NewProject} from "../../components/NewProject";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -55,6 +56,12 @@ export const Dashboard = () => {
             </div>
           )}
           {!isLoading && projects && <ProjectCard projects={projects} />}
+          <div
+              style={{ border: "3px solid red" }}
+              className="project-square-container"
+            >
+              <button onClick={() => navigate("/new-project")}>New Project</button>
+            </div>
         </div>
       </div>
     </React.Fragment>

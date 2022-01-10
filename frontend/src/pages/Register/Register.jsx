@@ -30,7 +30,7 @@ const Register = () => {
       axios.post('http://localhost:5000/user/register', receivedData)
       .then(response => {
         console.log(response.data._id);
-        navigate(`/user/dashboard/${response.data.user._id}`);
+        navigate(`/user/dashboard/${response.data._id}`);
       })
       .catch (err => {
       console.log(err);
