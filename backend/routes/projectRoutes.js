@@ -18,11 +18,11 @@ router.get("/:id", async (req,res,next) => {
 })
 
 router.post("/create", async (req, res,next) => {
-    const users = req.body.users;
-    const data = req.body.data;
+    // const users = req.body.users;
+    // const data = req.body.data;
+    const title = req.body.title
     const createProject = new Project({
-        users: users,
-        data: data,
+        title: title
     });
     try {
         createProject.save();
