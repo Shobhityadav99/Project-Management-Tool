@@ -27,10 +27,9 @@ export const Profile = () => {
   };
   const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
-    console.log(localStorage.getItem('authorization-token'))
     const getData = async () => {
       await axios
-        .post(`http://localhost:5000/user/account/updateProfile/${userId}`, {
+        .get(`http://localhost:5000/user/account/updateProfile/${userId}`, {
           headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
         })
         .then((response) => {

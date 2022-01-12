@@ -21,10 +21,8 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   projects: [{
-    title: {
-      type: String,
-      required: true
-    },
+    type: mongoose.Types.ObjectId,
+    ref: 'Project'
   }],
 });
 
