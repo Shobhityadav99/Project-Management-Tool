@@ -6,30 +6,59 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middleware/auth");
 
-router.post("/account/updateProfile/:userId", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId);
-    if (!user) {
-      res.status(404).json("User not found");
-    }
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+router.post(
+  "/account/updateProfile/:userId",
+  authMiddleware,
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      if (!user) {
+        res.status(404).json("User not found");
+      }
 
-router.patch("/account/updateProfile/:userId", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId);
-    if (!user) {
-      res.status(404).json("User not found");
+      // Make sure that the user currently logged in can't change the profile of other users
+      try {
+        const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
+        console.log(decoded);
+        if (decoded.user._id != req.params.userId)
+          return res.status(401).send("Invalid session");
+      } catch (err) {
+        return res.status(401).json({ msg: "token invalid" });
+      }
+      
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json(err);
     }
-    await user.update({ bio: req.body.bio });
-    setTimeout(res.status(200).json(user), 5000);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+  },
+);
+
+router.patch(
+  "/account/updateProfile/:userId",
+  authMiddleware,
+  async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      if (!user) {
+        res.status(404).json("User not found");
+      }
+      await user.update({ bio: req.body.bio });
+
+      // Make sure that the user currently logged in can't change the profile of other users
+      try {
+        const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
+        console.log(decoded);
+        if (decoded.user._id != req.params.userId)
+          return res.status(401).send("Invalid session");
+      } catch (err) {
+        return res.status(401).json({ msg: "token invalid" });
+      }
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+);
 
 router.post("/register", async (req, res) => {
   const salt = await bcrypt.genSaltSync(8);
@@ -96,11 +125,12 @@ router.get("/dashboard/:userId", authMiddleware, async (req, res) => {
     if (!user) {
       return res.status(500).send("Invalid User");
     }
+
     // Make sure that the user currently logged in can't access the dashboard of other users
     try {
       const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
       console.log(decoded);
-      if(decoded.user._id != req.params.userId)
+      if (decoded.user._id != req.params.userId)
         return res.status(401).send("Invalid session");
     } catch (err) {
       return res.status(401).json({ msg: "token invalid" });

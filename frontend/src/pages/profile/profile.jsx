@@ -6,7 +6,11 @@ import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 export const Profile = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -23,9 +27,12 @@ export const Profile = () => {
   };
   const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
+    console.log(localStorage.getItem('authorization-token'))
     const getData = async () => {
       await axios
-        .post(`http://localhost:5000/user/account/updateProfile/${userId}`)
+        .post(`http://localhost:5000/user/account/updateProfile/${userId}`, {
+          headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
+        })
         .then((response) => {
           setEmail(response.data.email);
           setName(response.data.name);
@@ -36,13 +43,22 @@ export const Profile = () => {
         });
     };
     getData();
+
+    // If the user isn't logged in, redirect them to login page
+    const loginCheck = () => {
+      if(localStorage.getItem('authorization-token') == null)
+        navigate('/login');
+    }
+    loginCheck()
   },[]);
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     const receivedData = { name: name, email: email, bio: bio };
     await axios
-      .patch(`http://localhost:5000/user/account/updateProfile/${userId}`, receivedData)
+      .patch(`http://localhost:5000/user/account/updateProfile/${userId}`, receivedData, {
+        headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
+      })
       .then((response) => {
         console.log(response);
         // navigate(`/user/dashboard/${response.data.user.id}`);
