@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authMiddleware = require("../middleware/auth");
 
-router.post(
+router.get(
   "/account/updateProfile/:userId",
   authMiddleware,
   async (req, res) => {
@@ -25,7 +25,7 @@ router.post(
       } catch (err) {
         return res.status(401).json({ msg: "token invalid" });
       }
-      
+
       res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);

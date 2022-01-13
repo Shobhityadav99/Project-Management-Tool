@@ -8,7 +8,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 export const Profile = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -27,10 +26,9 @@ export const Profile = () => {
   };
   const userId = window.location.pathname.split("/").pop();
   useEffect(() => {
-    console.log(localStorage.getItem('authorization-token'))
     const getData = async () => {
       await axios
-        .post(`http://localhost:5000/user/account/updateProfile/${userId}`, {
+        .get(`http://localhost:5000/user/account/updateProfile/${userId}`, {
           headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
         })
         .then((response) => {

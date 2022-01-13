@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { ProjectCard } from "../../components/ProjectCard";
 import LoadingSpinner from "../../shared/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import {NewProject} from "../../components/NewProject";
+import {Popup} from "../../components/Popup";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
+  const [popupBtnState, setPopupBtnState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [projects, setProjects]= useState([]);
   useEffect(() => {
@@ -76,7 +77,9 @@ return (
               style={{ border: "3px solid red" }}
               className="project-square-container"
             >
-              <button onClick={() => navigate("/new-project")}>New Project</button>
+              <button onClick={() => setPopupBtnState(true)}>New Project</button>
+              <Popup trigger={popupBtnState} setTrigger={setPopupBtnState}><label className="new-project-title-label">Title :</label>&nbsp;
+              <input className="new-project-title" /></Popup>
             </div>
         </div>
       </div>
