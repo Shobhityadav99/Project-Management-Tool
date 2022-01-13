@@ -8,7 +8,6 @@ import { MyAccount } from "./pages/MyAccount/MyAccount";
 import { Project } from "./pages/Project/Project";
 import Register from "./pages/Register/Register";
 import { Profile } from './pages/profile/profile';
-import { NewProject } from "./components/NewProject";
 
 function App() {
   
@@ -23,7 +22,6 @@ function App() {
         <Route path='/project/:id' element={<Project />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/register' element={<Register />} />
-        <Route exact path='/new-project' element={<NewProject />} />
       </Routes>
       </Router>
       </>
