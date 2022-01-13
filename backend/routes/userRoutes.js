@@ -19,7 +19,6 @@ router.get(
       // Make sure that the user currently logged in can't change the profile of other users
       try {
         const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
-        console.log(decoded);
         if (decoded.user._id != req.params.userId)
           return res.status(401).send("Invalid session");
       } catch (err) {
