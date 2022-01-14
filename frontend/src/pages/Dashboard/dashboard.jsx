@@ -13,10 +13,11 @@ export const Dashboard = () => {
   const [popupBtnState, setPopupBtnState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [projects, setProjects]= useState([]);
+
   useEffect(() => {
-    const fetchProjects = async () => {
-      console.log(window.location.pathname);
-      await axios
+    console.log(window);
+    const fetchProjects = () => {
+      axios
       .get("http://localhost:5000" + window.location.pathname, {
         headers : {authorization: 'Bearer ' + localStorage.getItem('authorization-token')}
       })
@@ -78,8 +79,7 @@ return (
               className="project-square-container"
             >
               <button onClick={() => setPopupBtnState(true)}>New Project</button>
-              <Popup trigger={popupBtnState} setTrigger={setPopupBtnState}><label className="new-project-title-label">Title :</label>&nbsp;
-              <input className="new-project-title" /></Popup>
+              <Popup trigger={popupBtnState} setTrigger={setPopupBtnState} userid={userId}></Popup>
             </div>
         </div>
       </div>

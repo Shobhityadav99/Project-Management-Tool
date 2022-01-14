@@ -20,16 +20,21 @@
 
 .popup-inner .popup-add-button {
     position: absolute;
-    top: 16px;
-    right: 16px;
-}
-
-.popup-add-button {
-    margin-top: 2.2vh;
-    margin-right: 5vw;
+    top: 3.2vh;
+    right: 7vw;
 }
 
 .popup-close-button {
     position: absolute;
-    margin-left: 34vw;
+    font-weight: 500;
+    top: 1vh;
+    left: 32vw;
+    height: 25px;
+    width: 25px;
+    font-size: small;
+    border: none;
+}
+
+.popup-close-button:hover {
+    background-color: rgb(179, 179, 179);
 }
