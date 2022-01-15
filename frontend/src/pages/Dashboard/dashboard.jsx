@@ -15,7 +15,6 @@ export const Dashboard = () => {
   const [projects, setProjects]= useState([]);
 
   useEffect(() => {
-    console.log(window);
     const fetchProjects = () => {
       axios
       .get("http://localhost:5000" + window.location.pathname, {
