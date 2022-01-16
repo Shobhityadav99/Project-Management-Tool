@@ -12,8 +12,8 @@ export const Project = () => {
       await axios
       .get("http://localhost:5000" + window.location.pathname)
       .then((response) => {
-        console.log(response.data.project.cards);
-        setProjectData(response.data.project.cards);
+        console.log(response.data.project.data);
+        setProjectData(response.data.project.data);
       })
       .catch((err) => {
         console.log(err);
@@ -21,6 +21,7 @@ export const Project = () => {
     };
     fetchProjectData();
   }, []);
+  console.log(projectData);
   return (
     <div className="project-container">
       <Navbar/>
@@ -28,7 +29,7 @@ export const Project = () => {
       <div className="project-card-container">
         {projectData.map((card) => {
           return (
-            <Card key={`${card.title}69`} title={card.title} data={card.data} />
+            <Card key={`${card.title}69`} title={card.title} data={card.tasks} />
           );
         })}
       </div>

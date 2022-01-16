@@ -21,7 +21,14 @@ router.get("/:id", async (req, res, next) => {
 router.post("/create/:userId", async (req, res, next) => {
     const createdProject = new Project({
         admin: req.params.userId,
-        ProjectTitle: req.body.title
+        ProjectTitle: req.body.title,
+        data: [{
+            title: "Title 1",
+            tasks: [
+                "task 1",
+                "task 2"
+            ]
+        }]
     });
     let user;
     try {
@@ -42,7 +49,7 @@ router.post("/create/:userId", async (req, res, next) => {
         const sess = await mongoose.startSession();
         sess.startTransaction();
         await createdProject.save({ session: sess });
-        user.projects.push(createdProject);
+        user.projects.push({title: req.body.title,project: createdProject});
         await user.save({ session: sess });
         await sess.commitTransaction();
     } catch (err) {
@@ -52,7 +59,6 @@ router.post("/create/:userId", async (req, res, next) => {
         );
         return next(error);
     }
-
     res.status(201).json({ project: createdProject });
 });
 
