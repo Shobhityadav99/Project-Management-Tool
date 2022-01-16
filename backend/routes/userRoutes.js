@@ -134,7 +134,6 @@ router.get("/dashboard/:userId", authMiddleware, async (req, res) => {
     } catch (err) {
       return res.status(401).json({ msg: "token invalid" });
     }
-
     res.json({
       projects: user.projects,
     });

@@ -21,8 +21,13 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   projects: [{
-    type: mongoose.Types.ObjectId,
-    ref: 'Project'
+    title: {
+      type: String,
+    },
+    project: {
+      type: mongoose.Types.ObjectId,
+      ref: 'Project'
+    }
   }],
 });
 
