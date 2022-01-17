@@ -7,8 +7,12 @@ import "./Project.css";
 
 export const Project = () => {
   const [projectData, setProjectData] = useState([]);
-  const addNewCard = async () => {
-    await axios
+  const deleteCard = (id) => {
+    projectData.filter(card => card._id!==id);
+    console.log(projectData);
+  }
+  const addNewCard = () => {
+    axios
       .patch("http://localhost:5000" + window.location.pathname, {
         title: "sample title",
         tasks: ["sample task 1"],
@@ -39,7 +43,7 @@ export const Project = () => {
       <div className="project-card-container">
         {projectData.map((card) => {
           return (
-            <Card key={`${card._id}69`} title={card.title} data={card.tasks} />
+            <Card key={`${card._id}69`} title={card.title} data={card.tasks} id={card._id} deleteCard={deleteCard}/>
           );
         })}
       </div>
