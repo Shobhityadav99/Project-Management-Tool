@@ -16,7 +16,26 @@ router.get("/:id", async (req, res, next) => {
         return next(new Error("No Project Found with that id", 404));
     }
     res.json({ project: project });
-})
+});
+
+router.patch("/:id", async (req, res, next) => {
+    const projectId = req.params.id;
+    let project;
+    try {
+        project = await Project.findById(projectId);
+    } catch (err) {
+        return next(err);
+    }
+    if (!project) {
+        return next(new Error("No Project Found with that id", 404));
+    }
+    const title = req.body.title;
+    const tasks = req.body.tasks;
+    const data = project.data;
+    data.push({title,tasks});
+    await project.updateOne({data: data});
+    res.json({message: "Project Updated"})
+});
 
 router.post("/create/:userId", async (req, res, next) => {
     const createdProject = new Project({
@@ -49,7 +68,7 @@ router.post("/create/:userId", async (req, res, next) => {
         const sess = await mongoose.startSession();
         sess.startTransaction();
         await createdProject.save({ session: sess });
-        user.projects.push({title: req.body.title,project: createdProject});
+        user.projects.push({ title: req.body.title, project: createdProject });
         await user.save({ session: sess });
         await sess.commitTransaction();
     } catch (err) {
