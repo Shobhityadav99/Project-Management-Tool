@@ -39,7 +39,7 @@ export const Card = (props) => {
         <i className="fas fa-plus addButton"></i>
         <div className="card-trash-bottom">
           <hr />
-          <i className="fas fa-trash trashButton" onClick={props.deleteCard(props.id)}></i>
+          <i className="fas fa-trash trashButton" onClick={() => props.deleteCard(props.id)}></i>
         </div>
       </div>
     </React.Fragment>

@@ -8,14 +8,16 @@ import "./Project.css";
 export const Project = () => {
   const [projectData, setProjectData] = useState([]);
   const deleteCard = (id) => {
-    projectData.filter(card => card._id!==id);
+    setProjectData(projectData.filter(card => card._id!==id));
     console.log(projectData);
+    axios.patch("http://localhost:5000" + window.location.pathname, {id, flag : false}).then(response => console.log(response.data)).catch((err) => console.log("this didn't work"));
   }
   const addNewCard = () => {
     axios
       .patch("http://localhost:5000" + window.location.pathname, {
         title: "sample title",
         tasks: ["sample task 1"],
+        flag: true
       })
       .then((response) => {
         window.location.reload(false);
@@ -35,7 +37,6 @@ export const Project = () => {
         console.log(err);
       });
   }, []);
-  console.log(projectData);
   return (
     <div className="project-container">
       <Navbar />

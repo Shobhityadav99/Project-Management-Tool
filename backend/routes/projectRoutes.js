@@ -29,13 +29,38 @@ router.patch("/:id", async (req, res, next) => {
     if (!project) {
         return next(new Error("No Project Found with that id", 404));
     }
+    if(req.body.flag == true) {
     const title = req.body.title;
     const tasks = req.body.tasks;
     const data = project.data;
     data.push({title,tasks});
     await project.updateOne({data: data});
     res.json({message: "Project Updated"})
+    }
+    else {
+       project.update();
+       try {await project.save(); 
+        res.json(req.body.id)
+        } catch(e) {res.json(e)};
+    }
 });
+
+// router.delete("/:id", async (req, res) => {
+//     const projectId = req.params.id;
+//     try {
+//         const project = await Project.findById(projectId);
+//     } catch(err) {
+//         return res.json(err);
+//     }
+//     if(!project) {
+//         return res.status(404).json({msg : "No project Found with that id"});
+//     }
+//     const data = project.data;
+//     await project.update(
+//         { _id: id },
+//         { $pull: { 'contact.phone': { number: '+1786543589455' } } }
+//       );
+// })
 
 router.post("/create/:userId", async (req, res, next) => {
     const createdProject = new Project({
