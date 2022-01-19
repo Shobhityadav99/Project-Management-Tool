@@ -4,8 +4,8 @@ body {
 
 .board {
   margin-top: 5px;
-  height: 370px;
-  width: 239px;
+  height: 39vh;
+  width: 17vw;
   background-color: aqua;
 }
 
@@ -17,8 +17,8 @@ body {
   background-color: crimson;
   color: white;
   justify-self: center;
-  height: 30px;
-  width: 239px;
+  height: 3vh;
+  width: 17vw;
   border-radius: 5px;
   cursor: pointer;
 }

@@ -38,7 +38,7 @@ export const Card = (props) => {
         </Board>
         <i className="fas fa-plus addButton"></i>
         <div className="card-trash-bottom">
-          <hr />
+          <hr style={{"marginTop": "0.5vh"}} />
           <i className="fas fa-trash trashButton" onClick={() => props.deleteCard(props.id)}></i>
         </div>
       </div>

@@ -1,6 +1,6 @@
 .card-container {
-  height: 500px;
-  width: 239px;
+  height: 54vh;
+  width: 17vw;
   background-color: gray;
   margin: 5px;
   align-items: center;
@@ -12,10 +12,11 @@
 
 .edit-text {
   margin: 0.5vh;
-  margin-left: 1vw;
+  margin-left: 0.5vw;
   font-size: large;
   max-width: 280px;
   margin-top: 10px;
+  height: 5vh;
 }
 
 .label-text {
@@ -25,7 +26,7 @@
 
 .edit-button {
   margin-top: 1vh;
-  margin-left: 10vw;
+  margin-left: 8vw;
   background-color: grey;
   border: 0;
   cursor: pointer;
@@ -37,6 +38,7 @@
   align-items: center;
   margin-left: 133px;
   cursor: pointer;
+  margin-top: 1vh;
 }
 
 .trashButton {
@@ -44,6 +46,7 @@
   display: flex;
   margin-left: 136px;
   cursor: pointer;
+  margin-top: -1vh;
 }
 
 .card-trash-bottom {
