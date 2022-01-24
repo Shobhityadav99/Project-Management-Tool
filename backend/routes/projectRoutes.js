@@ -29,7 +29,7 @@ router.patch("/:id", async (req, res, next) => {
     if (!project) {
         return next(new Error("No Project Found with that id", 404));
     }
-    if(req.body.flag == true) {
+    if(req.body.flag == "AddNew") {
     const title = req.body.title;
     const tasks = req.body.tasks;
     const data = project.data;
@@ -37,13 +37,28 @@ router.patch("/:id", async (req, res, next) => {
     await project.updateOne({data: data});
     res.json({message: "Project Updated"})
     }
-    else {
+    else if(req.body.flag === "Delete" ){
         try {
             await project.updateOne({data : project.data.filter((card) => card._id.toString() !== req.body.id)});
             res.json(project);
         } catch (err) {
             res.status(500).json(err);
         }
+    } else if(req.body.flag === "UpdateTitle"){
+        try {
+            await project.updateOne({data : project.data.map((card) => {
+                console.log(card._id.toString());
+                console.log(req.body.id);
+                if (card._id.toString() === req.body.id){
+                    card.title = req.body.title
+                }
+            })});
+            res.json(project);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    } else{
+        next("Invalid Route",404);
     }
 });
 

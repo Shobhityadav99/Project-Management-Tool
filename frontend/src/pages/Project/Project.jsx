@@ -7,17 +7,33 @@ import "./Project.css";
 
 export const Project = () => {
   const [projectData, setProjectData] = useState([]);
+  const updateTitle = (id, title) => {
+    axios
+      .patch("http://localhost:5000" + window.location.pathname, {
+        id,
+        title,
+        flag: "UpdateTitle",
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log("this didn't work"));
+  };
   const deleteCard = (id) => {
-    setProjectData(projectData.filter(card => card._id!==id));
+    setProjectData(projectData.filter((card) => card._id !== id));
     console.log(projectData);
-    axios.patch("http://localhost:5000" + window.location.pathname, {id, flag : false}).then(response => console.log(response.data)).catch((err) => console.log("this didn't work"));
-  }
+    axios
+      .patch("http://localhost:5000" + window.location.pathname, {
+        id,
+        flag: "Delete",
+      })
+      .then((response) => console.log(response.data))
+      .catch((err) => console.log("this didn't work"));
+  };
   const addNewCard = () => {
     axios
       .patch("http://localhost:5000" + window.location.pathname, {
         title: "sample title",
         tasks: ["sample task 1"],
-        flag: true
+        flag: "AddNew",
       })
       .then((response) => {
         window.location.reload(false);
@@ -44,7 +60,14 @@ export const Project = () => {
       <div className="project-card-container">
         {projectData.map((card) => {
           return (
-            <Card key={`${card._id}69`} title={card.title} data={card.tasks} id={card._id} deleteCard={deleteCard}/>
+            <Card
+              key={`${card._id}69`}
+              title={card.title}
+              data={card.tasks}
+              id={card._id}
+              deleteCard={deleteCard}
+              updateTitle={updateTitle}
+            />
           );
         })}
       </div>
