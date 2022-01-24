@@ -12,7 +12,7 @@ export const Card = (props) => {
     setIsEditing(false);
     console.log(val.target.value);
     setTitle(val.target.value.toString());
-    props.updateTitle(props.id,title);
+    props.updateTitle(props.id,val.target.value.toString());
   };
   const data = props.data;
   console.log(data);

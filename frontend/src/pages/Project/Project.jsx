@@ -8,6 +8,7 @@ import "./Project.css";
 export const Project = () => {
   const [projectData, setProjectData] = useState([]);
   const updateTitle = (id, title) => {
+    console.log(title);
     axios
       .patch("http://localhost:5000" + window.location.pathname, {
         id,
