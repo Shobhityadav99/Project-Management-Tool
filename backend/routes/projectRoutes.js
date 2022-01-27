@@ -30,7 +30,7 @@ router.patch("/:id", async (req, res, next) => {
   if (!project) {
     return next(new Error("No Project Found with that id", 404));
   }
-  if (req.body.flag == "AddNew") {
+  if (req.body.flag == "AddNewCard") {
     const title = req.body.title;
     const tasks = req.body.tasks;
     const data = project.data;
@@ -61,7 +61,42 @@ router.patch("/:id", async (req, res, next) => {
     } catch (err) {
       res.status(500).json(err);
     }
-  } else {
+  } else if (req.body.flag === "UpdateTask") {
+    try {
+      let d = project.data;
+      d.map((card) => {
+        if (card._id.toString() === req.body.id) {
+          let index = 0;
+          let i = 0;
+          card.tasks.forEach(element => {
+            if (element === req.body.oldTask) {
+              index = i;
+            }
+            i++;
+          });
+          card.tasks[index] = req.body.task;
+        }
+      });
+      await project.updateOne({ data: d });
+      res.json(project);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else if (req.body.flag === "AddNewTask") {
+    try {
+      let d = project.data;
+      d.map((card) => {
+        if (card._id.toString() === req.body.id) {
+          card.tasks.push("click to edit");
+        }
+      });
+      await project.updateOne({ data: d });
+      res.json(project);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+  else {
     next("Invalid Route", 404);
   }
 });

@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Card.css";
-import EdiText from "react-editext";
 import Board from "../pages/DragAndDrop/Board";
 import DragableCard from "../pages/DragAndDrop/DragableCard";
 import { useState } from "react";
@@ -9,10 +8,12 @@ export const Card = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
   const inputTitleHandler = (val) => {
-    setIsEditing(false);
-    console.log(val.target.value);
-    setTitle(val.target.value.toString());
-    props.updateTitle(props.id,val.target.value.toString());
+    if(val.target.value.toString()!==""){
+      setIsEditing(false);
+      console.log(val.target.value);
+      setTitle(val.target.value.toString());
+      props.updateTitle(props.id, val.target.value.toString());
+    }
   };
   const data = props.data;
   console.log(data);
@@ -30,13 +31,21 @@ export const Card = (props) => {
           {data.map((task) => {
             console.log(task);
             return (
-              <DragableCard id={`${task}69`} key={`${task}69`}>
+              <DragableCard
+                id={props.id}
+                key={`${task}69`}
+                updateTask={props.updateTask}
+                task={task}
+              >
                 <p>{task}</p>
               </DragableCard>
             );
           })}
         </Board>
-        <i className="fas fa-plus addButton"></i>
+        <i
+          className="fas fa-plus addButton"
+          onClick={() => props.addNewTask(props.id)}
+        ></i>
         <div className="card-trash-bottom">
           <hr style={{ marginTop: "0.5vh" }} />
           <i
