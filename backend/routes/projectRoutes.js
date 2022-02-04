@@ -95,6 +95,22 @@ router.patch("/:id", async (req, res, next) => {
     } catch (err) {
       res.status(500).json(err);
     }
+  }else if(req.body.flag === "UpdateCards"){
+    try {
+      let d = project.data;
+      d.map((card) => {
+        if (card._id.toString() === req.body.NewCardId) {
+          card.tasks.push(req.body.data);
+        }
+        if (card._id.toString() === req.body.OldCardId) {
+          card.tasks.remove(req.body.data);
+        }
+      });
+      await project.updateOne({ data: d });
+      res.json(project);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
   else {
     next("Invalid Route", 404);

@@ -10,8 +10,8 @@ const DragableCard = (props) => {
       setIsEditing(false);
       setTask(val.target.value.toString());
       props.updateTask(props.id, props.task, val.target.value.toString());
-    }else{
-        setIsEditing(false);
+    } else {
+      setIsEditing(false);
     }
   };
 
@@ -24,6 +24,11 @@ const DragableCard = (props) => {
     e.stopPropagation();
   };
 
+  const dragEnd = (e) => {
+    e.preventDefault();
+    console.log("Card DragENd");
+  };
+
   return (
     <div
       id={props.id}
@@ -31,6 +36,7 @@ const DragableCard = (props) => {
       draggable="true"
       onDragStart={dragStart}
       onDragOver={dragOver}
+      onDragEnd={dragEnd}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
         {!isEditing ? (

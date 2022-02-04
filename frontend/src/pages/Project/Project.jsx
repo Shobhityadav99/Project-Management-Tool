@@ -81,6 +81,7 @@ export const Project = () => {
         console.log(err);
       });
   }, []);
+  
   return (
     <div className="project-container">
       <Navbar />
@@ -89,7 +90,7 @@ export const Project = () => {
         {projectData.map((card) => {
           return (
             <Card
-              key={`${card._id}69`}
+              key={`${card._id}_key`}
               title={card.title}
               data={card.tasks}
               id={card._id}

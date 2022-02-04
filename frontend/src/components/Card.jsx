@@ -3,12 +3,13 @@ import "../css/Card.css";
 import Board from "../pages/DragAndDrop/Board";
 import DragableCard from "../pages/DragAndDrop/DragableCard";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const Card = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(props.title);
   const inputTitleHandler = (val) => {
-    if(val.target.value.toString()!==""){
+    if (val.target.value.toString() !== "") {
       setIsEditing(false);
       console.log(val.target.value);
       setTitle(val.target.value.toString());
@@ -16,7 +17,6 @@ export const Card = (props) => {
     }
   };
   const data = props.data;
-  console.log(data);
   return (
     <React.Fragment>
       <div className="card-container">
@@ -27,13 +27,12 @@ export const Card = (props) => {
             <input onBlur={inputTitleHandler} />
           )}
         </div>
-        <Board id={`${props.title}69`}>
+        <Board id={props.id}>
           {data.map((task) => {
-            console.log(task);
             return (
               <DragableCard
-                id={props.id}
-                key={`${task}69`}
+                id={uuidv4()}
+                key={uuidv4()}
                 updateTask={props.updateTask}
                 task={task}
               >
